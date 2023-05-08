@@ -1,0 +1,82 @@
+body {
+    background: conic-gradient(from 90deg at 50% 0%, #111827, 50%, #3d3d3d, #111827);
+}
+
+.outer {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.title {
+    color: #fff;
+    font-size: 3em;
+    font-family: Nunito Sans,sans-serif;
+    font-weight: 700;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.submit-button {
+    background-color: #4CAF50;
+    padding: 10px 20px 10px 20px;
+    border-radius: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    height: 56px;
+    cursor: pointer;
+    border: none;
+}
+
+.submit-button:hover {
+    background-color: #429945;
+}
+
+.input {
+    flex-grow: 1;
+    height: 36px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-size: 1.5em;
+    max-width: 100%;
+    border: none;
+}
+
+.input:focus {
+    outline-color: #4CAF50;
+    outline-width: thin;
+    outline-style: solid;
+}
+
+.form {
+    display: flex;
+    column-gap: 20px;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 640px) {
+    .form {
+        margin: 0 10px 0 10px;
+    }
+
+    .title {
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .form {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+}
+
+.logo {
+    padding-top: 20px;
+    width: 75px;
+}
+
+

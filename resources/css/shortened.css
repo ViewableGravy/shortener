@@ -1,0 +1,121 @@
+.heading {
+    font-size: 2em;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-family: 'Nunito Sans';
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.short {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-family: 'Nunito Sans';
+    font-size: 1.5em;
+    overflow-wrap: anywhere;
+    margin: 0;
+}
+
+.short:hover {
+    cursor: pointer;
+    color: #50C878;
+    text-decoration: underline;
+}
+
+.separator {
+    color: white;
+}
+
+.container {
+    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E");
+    background-color: rgb(17 24 39);
+    height: calc(100vh - 10px);
+    margin: 0;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-hover {
+    color: white;
+    text-align: center;
+}
+
+.copy-hover:hover {
+    cursor: pointer;
+    color: #50C878;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.toast {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #50C878;
+    padding: 20px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    margin-left: 20px;
+}
+
+.toast.display {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+}
+
+.toast > p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.link-container {
+    margin: 0px 20px 0 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.button {
+    background-color: #50C878;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in;
+}
+
+.button:hover {
+    background-color: #3b9f5f;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+}
