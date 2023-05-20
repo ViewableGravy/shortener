@@ -63,6 +63,10 @@
         background-color: #429945;
     }
 
+    .email {
+        margin-bottom: 0;
+    }
+
     .have-account {
         color: #fff;
         text-align: center;
@@ -78,12 +82,24 @@
     .have-account a:hover {
         text-decoration: underline;
     }
+
+    .error-message {
+        color: #ff6f6f;
+        font-size: 1.1em;
+        margin-top: 10px;
+        margin-left: 10px;
+        max-width: 80%;
+    }
 </style>
 
 <body>
-    <form>
+    <form method="post" action="/login" class="form">
+        @csrf
         <h1>Login</h1>
-        <input type="text" name="Email" placeholder="Email" />
+        <input type="text" name="email" class="email" placeholder="Email" />
+        @error('email')
+            <p class="error-message">{{ $message }}</p>
+        @enderror
         <input type="password" name="password" placeholder="Password" />
         <input type="submit" value="Login" />
         <p class="have-account"> Don't have an account yet?

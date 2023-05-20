@@ -22,17 +22,17 @@ class AuthenticationController extends Controller
     {
         //validate fields
         $fields = request()->validate([
-            'email' => [ 'required', 'email', Rule::unique('User', 'email') ],
-            'first_name' => ['required', 'max:255'],
-            'last_name' => ['required', 'max:255'],
-            'password' => [ 'required', 'confirmed', 'min:8' ]
+            'email'      => [ 'required', 'email', Rule::unique('users', 'email') ],
+            'first_name' => [ 'required', 'max:255'],
+            'last_name'  => [ 'required', 'max:255'],
+            'password'   => [ 'required', 'confirmed', 'min:8' ]
         ]);
 
         // create user | (password is hashed using a mutator)
-        User::create($fields);
+        $user = User::create($fields);
 
         //Sign the user in
-        // auth()->attempt($fields);
+        auth()->login($user);
 
         //show registration message (flash)
         session()->flash('success', [
@@ -42,5 +42,34 @@ class AuthenticationController extends Controller
 
         //redirect to dhasboard (home for now)
         return redirect('/');
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+
+        return redirect('/');
+    }
+
+    public function login() {
+        //validate fields
+        $fields = request()->validate([
+            'email'      => [ 'required', 'email' ],
+            'password'   => [ 'required' ]
+        ]);
+
+        //attempt to log the user in
+        if (auth()->attempt($fields)) {
+            //redirect to dashboard
+            return redirect('/')->with('success', [
+                'title' => 'Login Successful',
+                'message' => 'You are now logged in.'
+            ]);
+        }
+
+        //redirect to login form
+        return back()->withErrors([
+            'email' => 'Your provided credentials could not be verified.'
+        ]);
     }
 }

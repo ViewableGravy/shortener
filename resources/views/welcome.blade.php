@@ -80,13 +80,17 @@
             padding: 10px 20px;
             border-radius: 15px;
 
-            font-size: 1.5em;
+            font-size: 1.5rem;
             color: white;
             font-weight: bold;
             cursor: pointer;
             text-decoration: none;
 
             border: none;
+        }
+
+        .text {
+            color: black;
         }
 
         .login, .register {
@@ -183,7 +187,7 @@
             }
         }
 
-        @media screen and (max-width: 321px) {
+        @media screen and (max-width: 360px) {
             .login, .register {
                 width: 100%;
             }
@@ -203,14 +207,21 @@
         <div class="form-container">
             <h1 class="title">Enter a URL to shorten</h1>
             <form action="/shorten" method="POST" class="form"> @csrf
-                <input type="text" name="url" placeholder="https://example.com" class="input" pattern="https?://.*"/>
+                <input type="text" name="url" placeholder="https://example.com" class="input text" pattern="https?://.*"/>
                 <button class="submit-button">Shorten</button>
             </form>
         </div>
 
         <div class="auth">
-            <a href="/login" class="login">Login</a>
-            <a href="/register" class="register">Register</a>
+            @guest
+                <a href="/login" class="login">Login</a>
+                <a href="/register" class="register">Register</a>
+            @else
+                <form action="/logout" method="POST" class="login"> @csrf
+                    <button class="login">Logout</button>
+                </form>
+                <a href="/dashboard" class="register">Dashboard</a>
+            @endguest
         </div>
 
         @if (session()->has('success'))

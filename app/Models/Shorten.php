@@ -15,9 +15,10 @@ class Shorten extends Model
         'short',
         'long',
         'visits',
+        'user_id'
     ];
 
-    public static function getLongFromShort($short)
+    public static function getLongFromShort(string $short)
     {
         $shorten = Shorten::where('short', $short)->first();
 
@@ -35,14 +36,17 @@ class Shorten extends Model
         * @param string $url
         * @return [error|id]
     */
-    public static function shortCreate($url): array {
+    public static function shortCreate(string $url, ?User $user = null): array {
+        // ddd($user->id);
+
         while (true) {
             $id = Shorten::create_id();
 
             try {
               Shorten::create([
                   'long' => $url,
-                  'short' => $id
+                  'short' => $id,
+                  'user_id' => $user ? $user->id : null
               ]);
               break;
             } catch (\Exception $e) {
